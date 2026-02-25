@@ -79,12 +79,12 @@
   <div id="root"></div>
 
   <script>
-    // ── Supabase init ────────────────────────────────────────────
+    // ── Supabase init ──────────────────────────────────────────────
     const SUPABASE_URL = 'https://xujwsabyrkyjulwisfct.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh1andzYWJ5cmt5anVsd2lzZmN0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIwNDcyMDIsImV4cCI6MjA4NzYyMzIwMn0.sL2a3yztoQgRFAX4WnoVoUqezV6b_6MD4l_PiNS4QNs';
     window._sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    // ── Service Worker ──────────────────────────────────────────────
+    // ── Service Worker ─────────────────────────────────────────────
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js')
@@ -124,7 +124,7 @@
   <script type="text/babel">
     const { useState, useEffect, useRef } = React;
 
-    // ── Simple UUID fallback ────────────────────────────────────────
+    // ── Simple UUID fallback ───────────────────────────────────────
     const genId = () => {
       if (typeof crypto !== 'undefined' && crypto.randomUUID) return crypto.randomUUID();
       return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
@@ -133,7 +133,7 @@
       });
     };
 
-    // ── SVG Icons ────────────────────────────────────────────────
+    // ── SVG Icons ─────────────────────────────────────────────────
     const Mic = p => <svg {...p} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>;
     const MicOff = p => <svg {...p} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="2" x2="22" y1="2" y2="22"/><path d="M18.89 13.23A7.12 7.12 0 0 0 19 12v-2"/><path d="M5 10v2a7 7 0 0 0 12 5"/><path d="M15 9.34V5a3 3 0 0 0-5.68-1.33"/><path d="M9 9v3a3 3 0 0 0 5.12 2.12"/><line x1="12" x2="12" y1="19" y2="22"/></svg>;
     const Plus = p => <svg {...p} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>;
@@ -150,7 +150,7 @@
     const CalendarPlus = p => <svg {...p} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><line x1="19" x2="19" y1="16" y2="22"/><line x1="16" x2="22" y1="19" y2="19"/></svg>;
     const Wifi = p => <svg {...p} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg>;
 
-    // ── Terminator Logo ───────────────────────────────────────────
+    // ── Terminator Logo ────────────────────────────────────────────
     const TerminatorLogo = () => (
       <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="terminator-logo">
         <defs>
@@ -173,9 +173,9 @@
       </svg>
     );
 
-    // ── Auth Screen ──────────────────────────────────────────────
+    // ── Auth Screen ────────────────────────────────────────────────
     const AuthScreen = ({ onAuth }) => {
-      const [m/de, setMode] = useState('signin');
+      const [mode, setMode] = useState('signin');
       const [email, setEmail] = useState('');
       const [password, setPassword] = useState('');
       const [error, setError] = useState('');
@@ -248,7 +248,7 @@
       );
     };
 
-    // ── Main Board ──────────────────────────────────────────────────
+    // ── Main Board ─────────────────────────────────────────────────
     const SkyNetBoard = () => {
       const [user, setUser]           = useState(null);
       const [authReady, setAuthReady] = useState(false);
@@ -271,7 +271,7 @@
         { id: 'complete',   title: 'Complete',     icon: CheckCircle, color: 'from-emerald-500 to-green-600' }
       ];
 
-      // ── Auth init ──────────────────────────────────────────────
+      // ── Auth init ────────────────────────────────────────────────
       useEffect(() => {
         window._sb.auth.getSession().then(({ data: { session } }) => {
           setUser(session?.user ?? null);
