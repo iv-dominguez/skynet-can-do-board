@@ -1,17 +1,17 @@
 // SkyNet Can Do Board - Service Worker
 // Provides offline capability and caching for PWA
 
-const CACHE_NAME = 'skynet-can-do-board-v1';
-const STATIC_CACHE = 'skynet-static-v1';
-const CDN_CACHE = 'skynet-cdn-v1';
+const CACHE_NAME = 'skynet-can-do-board-v2';
+const STATIC_CACHE = 'skynet-static-v2';
+const CDN_CACHE = 'skynet-cdn-v2';
 
 // Core files to cache for offline use
 const CORE_ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png'
+  '/skynet-can-do-board/',
+  '/skynet-can-do-board/index.html',
+  '/skynet-can-do-board/manifest.json',
+  '/skynet-can-do-board/icons/icon-192x192.png',
+  '/skynet-can-do-board/icons/icon-512x512.png'
 ];
 
 // CDN resources to cache
@@ -90,6 +90,7 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
       fetch(request)
         .then((response) => {
+          // Cache the latest version
           const responseClone = response.clone();
           caches.open(STATIC_CACHE).then((cache) => {
             cache.put(request, responseClone);
@@ -97,8 +98,9 @@ self.addEventListener('fetch', (event) => {
           return response;
         })
         .catch(() => {
+          // Offline - serve from cache
           return caches.match(request).then((cached) => {
-            return cached || caches.match('/index.html');
+            return cached || caches.match('/skynet-can-do-board/index.html');
           });
         })
     );
@@ -165,10 +167,11 @@ self.addEventListener('message', (event) => {
   }
 });
 
-// Background sync for future use
+// Background sync for future use (e.g., syncing tasks when back online)
 self.addEventListener('sync', (event) => {
   if (event.tag === 'sync-tasks') {
     console.log('[SkyNet SW] Background sync triggered');
+    // Future: sync tasks to cloud storage
   }
 });
 
@@ -195,7 +198,7 @@ self.addEventListener('push', (event) => {
 // Handle notification clicks
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
-  const url = event.notification.data?.url || '/';
+  const url = event.notification.data?.url || '/skynet-can-do-board/';
   event.waitUntil(
     clients.matchAll({ type: 'window' }).then((windowClients) => {
       for (const client of windowClients) {

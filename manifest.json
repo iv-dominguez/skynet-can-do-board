@@ -2,12 +2,12 @@
   "name": "SkyNet Can Do Board",
   "short_name": "Can Do Board",
   "description": "AI-powered productivity kanban board with voice input, Siri integration, and task analysis. Powered by SkyNet.",
-  "start_url": "/",
+  "start_url": "/skynet-can-do-board/",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#dc2626",
   "orientation": "any",
-  "scope": "/",
+  "scope": "/skynet-can-do-board/",
   "icons": [
     {
       "src": "icons/icon-192x192.png",
@@ -22,10 +22,7 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": [
-    "productivity",
-    "utilities"
-  ],
+  "categories": ["productivity", "utilities"],
   "lang": "en-US",
   "dir": "ltr",
   "prefer_related_applications": false,
@@ -34,7 +31,7 @@
       "name": "Add Draft Task",
       "short_name": "New Draft",
       "description": "Add a new task to the Draft column",
-      "url": "/?addDraft=New+Task",
+      "url": "/skynet-can-do-board/?addDraft=New+Task",
       "icons": [
         {
           "src": "icons/icon-192x192.png",
@@ -46,7 +43,7 @@
       "name": "Add To Do Task",
       "short_name": "New Todo",
       "description": "Add a new task to the To Do column with AI analysis",
-      "url": "/?addTodo=New+Task",
+      "url": "/skynet-can-do-board/?addTodo=New+Task",
       "icons": [
         {
           "src": "icons/icon-192x192.png",
